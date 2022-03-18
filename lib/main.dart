@@ -40,8 +40,9 @@ class Application extends StatelessWidget {
   Widget getBody(){
     return(
         Container(
+          margin: EdgeInsets.only(top: 15),
           child: Padding(
-            padding: EdgeInsets.all(25),
+            padding: EdgeInsets.all(15),
             child: Container(
               width: double.infinity,
               child:
@@ -52,6 +53,8 @@ class Application extends StatelessWidget {
                     ),
                       _getTtile(),
                       _getSocialMedia(),
+                      _devider(),
+                      _getSkillCards(),
                     ]
                 ,)
             ,)
@@ -66,14 +69,14 @@ Widget _getTtile(){
       padding: EdgeInsets.all(20),
       child: Text(
         "Full-stack Web Developer", 
-        style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.w600),
+        style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),
       ),
     )
   );
 }
 
 Widget _getSocialMedia(){
-  var allSocialMedia = ['github', 'linkedin', 'whatsapp', 'youtube'];
+  var allSocialMedia = ['github', 'linkedin', 'whatsapp', 'youtube', 'instagram'];
   return(
     Container(
       margin: EdgeInsets.only(top: 20),
@@ -88,8 +91,64 @@ Widget _getSocialMedia(){
               fit:BoxFit.contain 
             ),
         ],
+      ),
+    )
+  );
+}
+
+Widget _devider(){
+  return(
+  Center(
+    child: Padding(
+      padding: EdgeInsets.all(30),
+      child: Divider(
+        height: 20,
+        thickness: 2.5,
+        endIndent: 0,
+        color: Colors.black,
+      ),
+    )
+  )
+  );
+}
+
+
+Widget _getSkillCards(){
+  var skills = ['html', 'css', 'js', 'ReactJs' , 'python', 'django'];
+  return(
+  Container(
+    margin: EdgeInsets.only(top: 5),
+    child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            for(var each in skills)
+            Container(
+              margin: EdgeInsets.only(right: 7),
+              child: Card(
+                elevation: 3,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'images/$each.png',
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.contain,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(7),
+                      child: Text(
+                        '$each',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                        )
+                    )
+                  ],
+                ) 
+              ),
+            )
+          ]
+        )
       )
-,
     )
   );
 }
