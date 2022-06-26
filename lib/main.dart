@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main_page.dart';
+import 'FirstPage.dart';
 
 void main() {
   runApp(Application());
@@ -13,7 +13,7 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage() 
+      home: FirstPage() 
     );
   }
 }

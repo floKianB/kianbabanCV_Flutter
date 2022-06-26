@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'html.dart';
+import 'css.dart';
+import 'js.dart';
+import 'reactJs.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  const FirstPage ({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +109,7 @@ Widget _devider(){
 
 
 Widget _getSkillCards(context){
-  var skills = ['html', 'css', 'js', 'ReactJs' , 'python', 'django'];
+  var skills = ['html', 'css', 'js', 'ReactJs'];
   return(
   Container(
     margin: EdgeInsets.only(top: 5),
@@ -132,6 +135,22 @@ Widget _getSkillCards(context){
                       ),
                         TextButton(
                           onPressed: (){
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  if(each == 'html'){
+                                    return html();
+                                  } else if(each == 'css'){
+                                    return css();
+                                  } else if(each == 'js'){
+                                    return js();
+                                  } else if(each == 'ReactJs'){
+                                    return reactJs();
+                                  }
+                                  return FirstPage();
+                                }
+                              )
+                            );
                           },
                           child: Text(
                             '$each',
@@ -145,21 +164,6 @@ Widget _getSkillCards(context){
             ]
           )
         ),
-        Container(
-          margin: EdgeInsets.only(top: 30.0),
-          child: 
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                primary: Colors.white,
-              side: BorderSide(color: Colors.black, width: 2),
-                backgroundColor: Colors.blue,
-              ),
-              onPressed: (){
-                navigateToBlogPage(context, Projects());
-              },
-              child: Text("Projects", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),)
-            ),
-        )
       ],
   )
   )
